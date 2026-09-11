@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/*
+ * DEVLINK design tokens — Mayora-inspired light theme (Step 10).
+ * Light base, crimson/red primary accents, warm dark text.
+ * All pages consume these tokens; hardcoded literals were migrated to var() references.
+ */
+@theme {
+  --color-primary: #d91e2e;
+  --color-primary-hover: #b3121f;
+
+  --color-background: #fdf4f2;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #faedeb;
+
+  --color-border: #f2dfd9;
+
+  --color-text-main: #241414;
+  --color-text-muted: #8c7370;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #e02d2d;
+  --color-info: #3b82f6;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-main);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Landing-page entrance motion (subtle, professional) */
+@keyframes devlink-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.devlink-fade-up {
+  animation: devlink-fade-up 0.6s ease-out both;
+}
+
+.devlink-fade-up-1 { animation-delay: 0.05s; }
+.devlink-fade-up-2 { animation-delay: 0.12s; }
+.devlink-fade-up-3 { animation-delay: 0.19s; }
+.devlink-fade-up-4 { animation-delay: 0.26s; }
+.devlink-fade-up-5 { animation-delay: 0.33s; }
+
+/* Scale-in for cards/images (landing) */
+@keyframes devlink-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.devlink-scale-in {
+  animation: devlink-scale-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.devlink-scale-in-1 { animation-delay: 0.1s; }
+.devlink-scale-in-2 { animation-delay: 0.25s; }
+.devlink-scale-in-3 { animation-delay: 0.4s; }
+
+/* Slow ambient zoom for background imagery (landing hero/auth panels) */
+@keyframes devlink-kenburns {
+  from {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(1.08) translateY(-8px);
+  }
+}
+
+.devlink-kenburns {
+  animation: devlink-kenburns 18s ease-in-out infinite alternate;
+}
+
+/* Gentle float for decorative accents */
+@keyframes devlink-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.devlink-float {
+  animation: devlink-float 5s ease-in-out infinite;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .devlink-fade-up,
+  .devlink-scale-in,
+  .devlink-kenburns,
+  .devlink-float {
+    animation: none;
+  }
+}

@@ -1,0 +1,22 @@
+# Environments
+.env
+.env.local
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+.freebuff/
+
+# Java / Maven (for root operations if any)
+target/
+*.class
+
+# Node / Vite (for root operations if any)
+node_modules/
+dist/
+dist-ssr/
+*.local

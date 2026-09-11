@@ -1,0 +1,186 @@
+{
+  "info": {
+    "name": "DevLink REST API - Langkah 5",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Jobs",
+      "item": [
+        {
+          "name": "Get All Jobs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/jobs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "jobs"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search Jobs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/jobs?search=react&sortBy=budget&direction=desc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "jobs"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "react"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "budget"
+                },
+                {
+                  "key": "direction",
+                  "value": "desc"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Job",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/jobs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "jobs"
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"REPLACE_WITH_UUID\",\n  \"title\": \"Build React Landing Page\",\n  \"description\": \"Need a responsive landing page\",\n  \"budget\": 5000000,\n  \"deadline\": \"2026-09-20\",\n  \"requiredSkills\": [\n    \"React\",\n    \"Tailwind CSS\"\n  ]\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Job By Id",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/jobs/REPLACE_WITH_JOB_UUID",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "jobs",
+                "REPLACE_WITH_JOB_UUID"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Job",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "http://localhost:8080/api/jobs/REPLACE_WITH_JOB_UUID",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "jobs",
+                "REPLACE_WITH_JOB_UUID"
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Build React Landing Page v2\",\n  \"description\": \"Updated description\",\n  \"budget\": 6000000,\n  \"deadline\": \"2026-10-20\",\n  \"requiredSkills\": [\n    \"React\",\n    \"NextJS\"\n  ]\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Job",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8080/api/jobs/REPLACE_WITH_JOB_UUID",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "jobs",
+                "REPLACE_WITH_JOB_UUID"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Job (Validation Error)",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/jobs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "jobs"
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"REPLACE_WITH_UUID\",\n  \"title\": \"\",\n  \"description\": \"Need a responsive landing page\",\n  \"budget\": -100,\n  \"deadline\": \"2026-09-20\",\n  \"requiredSkills\": [\n    \"React\",\n    \"Tailwind CSS\"\n  ]\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

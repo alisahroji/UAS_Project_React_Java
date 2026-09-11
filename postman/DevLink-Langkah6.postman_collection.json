@@ -1,0 +1,104 @@
+{
+  "info": {
+    "name": "DevLink - Langkah 6 (Auth & Security)",
+    "description": "Postman Collection for DevLink Backend - Langkah 6: Authentication and Authorization",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "AUTH",
+      "item": [
+        {
+          "name": "Register User (CLIENT)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": { "raw": "http://localhost:8080/api/auth/register", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "auth", "register" ] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Client One\",\n  \"email\": \"client@test.com\",\n  \"password\": \"password123\",\n  \"role\": \"CLIENT\"\n}" }
+          }
+        },
+        {
+          "name": "Register User (FREELANCER)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": { "raw": "http://localhost:8080/api/auth/register", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "auth", "register" ] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Freelancer One\",\n  \"email\": \"freelancer@test.com\",\n  \"password\": \"password123\",\n  \"role\": \"FREELANCER\"\n}" }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": { "raw": "http://localhost:8080/api/auth/login", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "auth", "login" ] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"client@test.com\",\n  \"password\": \"password123\"\n}" }
+          }
+        },
+        {
+          "name": "Get Current User (Me)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+            ],
+            "url": { "raw": "http://localhost:8080/api/auth/me", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "auth", "me" ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "JOB SECURITY",
+      "item": [
+        {
+          "name": "Create Job (Requires Bearer Token - CLIENT)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+            ],
+            "url": { "raw": "http://localhost:8080/api/jobs", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "jobs" ] },
+            "body": { "mode": "raw", "raw": "{\n  \"title\": \"Build React App\",\n  \"description\": \"I need a frontend expert.\",\n  \"budget\": 1000,\n  \"deadline\": \"2026-12-31\"\n}" }
+          }
+        },
+        {
+          "name": "Update Own Job",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+            ],
+            "url": { "raw": "http://localhost:8080/api/jobs/{{job_id}}", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "jobs", "{{job_id}}" ] },
+            "body": { "mode": "raw", "raw": "{\n  \"title\": \"Updated Job Title\",\n  \"description\": \"Updated description.\",\n  \"budget\": 2000,\n  \"deadline\": \"2026-12-31\"\n}" }
+          }
+        },
+        {
+          "name": "Delete Own Job",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+            ],
+            "url": { "raw": "http://localhost:8080/api/jobs/{{job_id}}", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "jobs", "{{job_id}}" ] }
+          }
+        },
+        {
+          "name": "Get All Jobs (Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "http://localhost:8080/api/jobs", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "jobs" ] }
+          }
+        }
+      ]
+    }
+  ]
+}
