@@ -11,3 +11,4 @@ public interface MessageService {
     List<MessageResponse> getMessagesByProposalId(UUID proposalId, UUID userId);
     void validateParticipant(UUID proposalId, UUID userId);
 }
+    
